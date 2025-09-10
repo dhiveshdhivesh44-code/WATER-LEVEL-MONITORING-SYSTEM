@@ -1,0 +1,32 @@
+#include <stdio.h>
+int main() {
+    int lowSensor, midSensor, highSensor;  // Sensor inputs (1 = water present, 0 = empty)
+    int motor = 0;                         // Motor status (0 = OFF, 1 = ON)
+    printf("Water Level Monitoring System\n");
+    // Simulation loop (runs 5 times)
+    for (int i = 0; i < 5; i++) {
+        printf("\nEnter sensor values (LOW MID HIGH): ");
+        scanf("%d %d %d", &lowSensor, &midSensor, &highSensor);
+        if (lowSensor == 0 && midSensor == 0 && highSensor == 0) {
+            printf("Tank is EMPTY → Motor ON.\n");
+            motor = 1;
+        }
+        else if (lowSensor == 1 && midSensor == 0 && highSensor == 0) {
+            printf("Tank is LOW → Motor ON.\n");
+            motor = 1;
+        }
+        else if (lowSensor == 1 && midSensor == 1 && highSensor == 0) {
+            printf("Tank is HALF → Motor ON.\n");
+            motor = 1;
+        }
+        else if (lowSensor == 1 && midSensor == 1 && highSensor == 1) {
+            printf("Tank is FULL → Motor OFF.\n");
+            motor = 0;
+        }
+        else {
+            printf("Invalid sensor input.\n");
+        }
+        printf("Motor Status: %s\n", motor ? "ON" : "OFF");
+    }
+    return 0;
+}
